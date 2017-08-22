@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		// new Object
+		var stu = new Object();
+		stu.name = "张三";
+		stu["age"] = 18;
+		stu["study"] = function(){
+			console.log(this.name + " 开始学习...");
+		}
+
+		stu.study();*/
+
+		/*// 直接量
+		var stu = {
+			name : "张三",
+			age : 18,
+			study : function(){
+				console.log(this.name + " 开始学习...");
+			}
+		};
+
+		stu.study();*/
+
+		/*
+		// 工厂方式创建对象
+		function createStudent(name, age) {
+			var stu = new Object();
+			stu.name = name;
+			stu.age = age;
+			stu.study = function(){
+				console.log(this.name + " 开始学习");
+			}
+
+			return stu;
+		}
+
+		var stu1 = createStudent("张三", 18);
+		var stu2 = createStudent("李四", 28);
+
+		stu1.study();
+		stu2.study();*/
+
+		/*
+		// 构造函数方式创建对象
+		function Student(name, age) {
+			this.name = name;
+			this.age = age;
+			this.study = function(){
+				console.log(this.name + ' 开始学习.....');
+			}
+		}
+
+		function Dog(name) {
+			this.name = name;
+		}
+
+		var stu = new Student("张三", 25);
+		stu.study();
+		var dog = new Dog("小白");
+
+		var objs = [stu, dog];
+
+		console.log(objs[0] instanceof Student);
+		console.log(objs[0] instanceof Object);
+		console.log(objs[0] instanceof Dog);*/
+
+		function Student(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		Student.prototype.study = function(){
+			console.log(this.name + ' 开始学习.....');
+		}
+
+		var stu = new Student("小红", 15);
+		stu.study();
+
+		console.dir(stu);
+		console.log(stu.__proto__ === Student.prototype)
+
+		var stu2 = new Student("小刚", 15);
+		stu2.study();
+
+		/*function xxx() {}
+		var xxx = function(){}
+		var xxx = new Function(){}*/
+	</script>
+</body>
+</html>

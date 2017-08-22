@@ -1,0 +1,59 @@
+面向对象：
+	(万物皆对象)
+	对象：
+		属性 -- 静态特征
+		方法 -- 动作
+	三大特性：
+		封装：实现内部细节隐藏，对外提供公共使用接口
+		继承：实现代码复用
+		多态：实现代码复用
+
+	抽象
+
+函数是一种特殊的对象
+
+创建对象方式：
+	1. 直接量
+	var stu = {
+		name : "";
+	}
+	2. new Object()
+	var stu = new Object();
+	stu.name = "";
+	3. 工厂
+	function createStudent(name, age) {
+		var stu = new Object(); // 准备原材料
+		stu.name = name; // 组装
+		stu.age = age;
+		stu.study = function(){
+			console.log(this.name + " 开始学习");
+		}
+
+		return stu; // 出厂
+	}
+	缺陷：不能区分创建对象的具体类型
+	4. 构造函数
+	function ConstructorName() {
+
+	}
+	通常构造函数是使用 new 来调用。
+	在 new 构造函数(参数列表) 调用构造函数时，构造函数中的 this 指向的是创建出来的对象本身
+
+	xx instanceof Student
+		-- 判断 xx 是否是由 Student 构造函数所创建（判断 xx 是否为 Student 的实例）
+
+	5. 构造函数 + prototype
+		prototype : 原型，作用：资源共享
+
+		构造函数中通常初始化静态的属性
+		将方法添加到原型中
+
+		通过 new 调用构造函数所创建出来的对象，在对象中会有一个隐式的 __proto__ 属性，指向其构造函数中的显式属性 prototype，这样将 prototype 原型中的资源在各对象中实现共享
+
+JS 中的对象是基于原型的对象
+
+所有的函数对象都有 prototype 属性
+所有的对象都有 __proto__ 属性
+
+对象属性查找时，先在自身空间中查找，自身空间中不存在，则到原型中继续查找，原型中不存在，再继续到原型的原型中(原型链)查找。
+在原型链中找到满足条件的第一个属性，则直接使用，使用完毕，结束原型链查找，如果在原型链中查找不到满足条件的属性，则返回 undefined
